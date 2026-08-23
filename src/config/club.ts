@@ -15,6 +15,9 @@ export const club = {
   area: "W01",
   charterDate: "2013-04-01",
 
+  mission:
+    "We provide a supportive and positive learning experience in which members are empowered to develop communication and leadership skills, resulting in greater self-confidence and personal growth.",
+
   meeting: {
     day: "Friday",
     time: "7:00 PM – 9:30 PM",
