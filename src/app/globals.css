@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/*
+  OPTICS VALLEY TOASTMASTERS — DESIGN TOKENS
+  Palette sampled directly from the club's real logo (see /public/images/logo).
+  Do not introduce new colors outside this set without updating this file first —
+  keep the palette closed so the site stays cohesive as pages are added.
+*/
+
+:root {
+  /* Brand core */
+  --color-gold: #fdbc1f;
+  --color-gold-soft: #ffd766;
+  --color-ink: #0a0a0a;
+  --color-navy: #0d3652;
+  --color-navy-deep: #081f30;
+  --color-cream: #fffdf7;
+  --color-cream-dim: #faf6ea;
+  --color-slate: #5b6b7c;
+  --color-slate-soft: #c9d3db;
+
+  /* Semantic timer colors — genuinely part of the club's own system
+     (Green/Yellow/Red cards used at every real meeting), reused for
+     the hero signature element and any future "role/status" UI. */
+  --color-timer-green: #2e9e5b;
+  --color-timer-yellow: #e8b93a;
+  --color-timer-red: #d64545;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+}
+
+@theme inline {
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-ink: var(--color-ink);
+  --color-navy: var(--color-navy);
+  --color-navy-deep: var(--color-navy-deep);
+  --color-cream: var(--color-cream);
+  --color-cream-dim: var(--color-cream-dim);
+  --color-slate: var(--color-slate);
+  --color-slate-soft: var(--color-slate-soft);
+  --color-timer-green: var(--color-timer-green);
+  --color-timer-yellow: var(--color-timer-yellow);
+  --color-timer-red: var(--color-timer-red);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+}
+
+* {
+  border-color: var(--color-slate-soft);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* Respect motion preferences site-wide — every animated component
+   should also check this via the useReducedMotion hook, but this
+   catches anything that slips through. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Visible keyboard focus, styled to match the brand instead of the
+   default blue browser ring. */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

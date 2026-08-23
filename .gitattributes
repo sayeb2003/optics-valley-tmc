@@ -1,0 +1,10 @@
+# Normalize line endings across Windows/Fedora dev environments
+* text=auto eol=lf
+
+# Never touch binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff2 binary
+*.ico binary
