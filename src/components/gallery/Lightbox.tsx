@@ -4,7 +4,7 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useCallback } from "react";
-import type { GalleryPhoto } from "@/data/gallery";
+import type { GalleryPhoto } from "@/lib/gallery";
 
 type LightboxProps = {
   photos: GalleryPhoto[];
@@ -52,7 +52,7 @@ export function Lightbox({ photos, activeIndex, onClose, onNavigate }: LightboxP
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label={photo.alt}
+          aria-label={photo.caption || "Meeting photo"}
         >
           <button
             className="absolute top-6 right-6 text-cream/80 hover:text-cream p-2"
@@ -88,14 +88,20 @@ export function Lightbox({ photos, activeIndex, onClose, onNavigate }: LightboxP
           )}
 
           <div
-            className="relative max-w-4xl w-full max-h-[80vh] flex flex-col items-center gap-3"
+            className="relative max-w-4xl w-full max-h-[85vh] flex flex-col items-center gap-3"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full h-[70vh]">
-              <Image src={photo.src} alt={photo.alt} fill className="object-contain" sizes="90vw" />
-            </div>
-            {photo.meetingDate && (
-              <p className="font-mono text-xs text-cream/50">{photo.meetingDate}</p>
+            <Image
+              src={photo.src}
+              alt={photo.caption || "Photo from an Optics Valley Toastmasters meeting"}
+              width={photo.width}
+              height={photo.height}
+              className="max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-[var(--radius-sm)]"
+              sizes="90vw"
+              priority
+            />
+            {photo.caption && (
+              <p className="text-cream/70 text-sm text-center max-w-lg">{photo.caption}</p>
             )}
           </div>
         </motion.div>

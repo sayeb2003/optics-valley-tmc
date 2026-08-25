@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/layout/Section";
 import { PhotoGrid } from "@/components/gallery/PhotoGrid";
+import { getGalleryPhotos } from "@/lib/gallery";
 import { club } from "@/config/club";
 
 export const metadata: Metadata = {
@@ -11,12 +12,14 @@ export const metadata: Metadata = {
 };
 
 export default function GalleryPage() {
+  const photos = getGalleryPhotos();
+
   return (
     <>
       <Navbar />
       <main className="flex-1">
         <Section tone="cream" className="pt-40 md:pt-48" eyebrow="Moments from Our Meetings" heading="Gallery">
-          <PhotoGrid />
+          <PhotoGrid photos={photos} />
         </Section>
       </main>
       <Footer />
