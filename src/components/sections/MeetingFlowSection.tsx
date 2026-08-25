@@ -1,4 +1,5 @@
 import { Section } from "@/components/layout/Section";
+import { Reveal } from "@/components/ui/Reveal";
 import { meetingFlow } from "@/config/club";
 
 export function MeetingFlowSection() {
@@ -11,15 +12,17 @@ export function MeetingFlowSection() {
     >
       <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
         {meetingFlow.map((step, i) => (
-          <div key={step.phase} className="flex gap-4">
-            <span className="font-mono text-sm text-gold-soft mt-1 shrink-0">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <div>
-              <h3 className="font-display text-lg mb-1">{step.phase}</h3>
-              <p className="text-cream/60 text-sm leading-relaxed">{step.description}</p>
+          <Reveal key={step.phase} delay={(i % 2) * 0.1}>
+            <div className="flex gap-4">
+              <span className="font-mono text-sm text-gold-soft mt-1 shrink-0">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="font-display text-lg mb-1">{step.phase}</h3>
+                <p className="text-cream/60 text-sm leading-relaxed">{step.description}</p>
+              </div>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
       <p className="text-center text-cream/40 text-xs font-mono mt-14">

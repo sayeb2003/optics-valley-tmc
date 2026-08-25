@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/layout/Section";
 import { SpeechTimerRing } from "@/components/ui/SpeechTimerRing";
 import { Button } from "@/components/ui/Button";
+import { HeroContent } from "@/components/sections/HeroContent";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { MeetingFlowSection } from "@/components/sections/MeetingFlowSection";
 import { LeadershipSection } from "@/components/sections/LeadershipSection";
@@ -16,7 +17,7 @@ export default function Home() {
       <main className="flex-1">
         <Section tone="navy" className="pt-40 md:pt-48 pb-24">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <HeroContent>
               <p className="font-mono text-xs tracking-widest text-gold-soft uppercase mb-4">
                 Club #{club.clubNumber} · District {club.district} · Since {club.charterDate.slice(0, 4)}
               </p>
@@ -37,7 +38,7 @@ export default function Home() {
                   Learn More
                 </Button>
               </div>
-            </div>
+            </HeroContent>
             <div className="flex justify-center">
               <SpeechTimerRing />
             </div>

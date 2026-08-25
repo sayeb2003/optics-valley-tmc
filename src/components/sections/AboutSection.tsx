@@ -1,4 +1,5 @@
 import { Section } from "@/components/layout/Section";
+import { Reveal } from "@/components/ui/Reveal";
 import { club } from "@/config/club";
 
 const WHY_POINTS = [
@@ -19,15 +20,17 @@ const WHY_POINTS = [
 export function AboutSection() {
   return (
     <Section tone="cream" id="about" eyebrow="About the Club" heading="Why Toastmasters">
-      <p className="max-w-2xl mx-auto text-center text-slate text-lg mb-16">
-        {club.mission}
-      </p>
+      <Reveal>
+        <p className="max-w-2xl mx-auto text-center text-slate text-lg mb-16">
+          {club.mission}
+        </p>
+      </Reveal>
       <div className="grid md:grid-cols-3 gap-8">
-        {WHY_POINTS.map((point) => (
-          <div key={point.title}>
+        {WHY_POINTS.map((point, i) => (
+          <Reveal key={point.title} delay={i * 0.1}>
             <h3 className="font-display text-xl mb-2">{point.title}</h3>
             <p className="text-slate text-sm leading-relaxed">{point.body}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </Section>
