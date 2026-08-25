@@ -29,7 +29,7 @@ export const club = {
   },
 
   contact: {
-    email: "sayeb0@outlook.com",
+    email: "13797021769@163.com",
     wechatGroup: "Optical_Valley_TMC",
   },
 
