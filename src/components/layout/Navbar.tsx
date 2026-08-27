@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui/Button";
@@ -16,15 +17,26 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
+    if (!isHome) return; // non-home pages are always in "scrolled" (solid) style
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
+
+  // Only transparent-over-dark-hero on the homepage, before scrolling.
+  // Every other page (cream background from the top) always gets the
+  // solid/readable style — otherwise cream text sits on a cream
+  // background and becomes unreadable, not just "less flashy".
+  const solid = !isHome || scrolled;
+
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   // Lock body scroll while the mobile menu is open
   useEffect(() => {
@@ -38,12 +50,12 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-colors duration-300",
-        scrolled ? "bg-cream/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+        solid ? "bg-cream/90 backdrop-blur-md shadow-sm" : "bg-transparent"
       )}
     >
       <nav className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
         <Link href="/" className="font-display text-lg font-medium">
-          <span className={scrolled ? "text-ink" : "text-cream"}>Optics Valley</span>{" "}
+          <span className={solid ? "text-ink" : "text-cream"}>Optics Valley</span>{" "}
           <span className="text-gold">TMC</span>
         </Link>
 
@@ -55,7 +67,7 @@ export function Navbar() {
                 href={link.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-gold",
-                  scrolled ? "text-ink" : "text-cream"
+                  solid ? "text-ink" : "text-cream"
                 )}
               >
                 {link.label}
@@ -72,7 +84,7 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className={cn("md:hidden p-2 -mr-2", scrolled ? "text-ink" : "text-cream")}
+          className={cn("md:hidden p-2 -mr-2", solid ? "text-ink" : "text-cream")}
           onClick={() => setMobileOpen(true)}
           aria-label="Open menu"
         >
