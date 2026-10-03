@@ -38,19 +38,25 @@ type ButtonAsButton = ButtonOwnProps &
  * here should earn its place across multiple pages, not one-off styling.
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonAsButton>(
-  ({ variant = "primary", size = "md", href, className, children, ...props }, ref) => {
+  ({ variant = "primary", size = "md", href, className, children, onClick, ...props }, ref) => {
     const classes = cn(baseStyles, variantStyles[variant], sizeStyles[size], className);
 
     if (href) {
       return (
-        <Link href={href} className={classes}>
+        <Link
+          href={href}
+          className={classes}
+          // Forward onClick so link-buttons can run side effects too
+          // (e.g. closing the mobile menu before navigating).
+          onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
+        >
           {children}
         </Link>
       );
     }
 
     return (
-      <button ref={ref} className={classes} {...props}>
+      <button ref={ref} className={classes} onClick={onClick} {...props}>
         {children}
       </button>
     );
