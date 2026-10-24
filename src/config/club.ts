@@ -65,6 +65,7 @@ export const executiveTeam: ExecRole[] = [
   { name: "Albin", role: "VP Public Relations (VPPR)" },
   { name: "Lexie", role: "Assistant VPPR" },
   { name: "Sophia", role: "Assistant VPPR" },
+  { name: "Ryan", role: "Assistant VPPR" },
   { name: "Gondal", role: "VP Education (VPE)" },
   { name: "Daniel", role: "Treasurer" },
   { name: "Margaret", role: "Club Finance Advisor" },

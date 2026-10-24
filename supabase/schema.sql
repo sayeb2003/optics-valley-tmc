@@ -122,6 +122,7 @@ select * from (values
   ('current', 'Albin',    'VP Public Relations (VPPR)', null, 60),
   ('current', 'Lexie',    'Assistant VPPR',             null, 70),
   ('current', 'Sophia',   'Assistant VPPR',             null, 80),
+  ('current', 'Ryan',     'Assistant VPPR',             null, 85),
   ('current', 'Gondal',   'VP Education (VPE)',         null, 90),
   ('current', 'Daniel',   'Treasurer',                  null, 100),
   ('current', 'Margaret', 'Club Finance Advisor',       null, 110),
