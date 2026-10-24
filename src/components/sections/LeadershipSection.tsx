@@ -1,9 +1,15 @@
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
-import { executiveTeam, pastLeaders } from "@/config/club";
+import { getPublicLeaders } from "@/lib/leaders";
 
-export function LeadershipSection() {
+/**
+ * Leadership cards + past leaders. Data comes from the admin portal
+ * (Supabase) when it's set up, otherwise from config/club.ts.
+ */
+export async function LeadershipSection() {
+  const { current: executiveTeam, past: pastLeaders } = await getPublicLeaders();
+
   return (
     <Section tone="cream" id="leadership" eyebrow="Club Executive Committee" heading="Leadership">
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
