@@ -2,6 +2,11 @@
  * CLUB.TS — single source of truth for all Optics Valley Toastmasters facts.
  *
  * Every component should pull club info from here, never hardcode it inline.
+ *
+ * NOTE: `executiveTeam` and `pastLeaders` below are the FALLBACK copy.
+ * Once Supabase is configured, the live leadership list is edited in the
+ * admin portal (/admin) and these arrays are only used if the database
+ * can't be reached. See supabase/README.md.
  * Fields wrapped like "[PLACEHOLDER]" are intentional — replace with real
  * content when available, don't delete the field.
  */
@@ -55,13 +60,13 @@ export const executiveTeam: ExecRole[] = [
   { name: "Judy", role: "President" },
   { name: "Forrest", role: "Assistant to the President" },
   { name: "Tracy", role: "Sergeant at Arms (SAA)" },
-  { name: "Gondal", role: "Secretary" },
+  { name: "Sayeb", role: "Secretary" },
   { name: "Kasun", role: "VP Membership (VPM)" },
-  { name: "Paul", role: "VP Public Relations (VPPR)" },
-  { name: "Albin", role: "Assistant VPPR" },
+  { name: "Albin", role: "VP Public Relations (VPPR)" },
   { name: "Lexie", role: "Assistant VPPR" },
-  { name: "Frances", role: "Assistant VPPR" },
-  { name: "Sayeb", role: "VP Education (VPE)" },
+  { name: "Sophia", role: "Assistant VPPR" },
+  { name: "Ryan", role: "Assistant VPPR" },
+  { name: "Gondal", role: "VP Education (VPE)" },
   { name: "Daniel", role: "Treasurer" },
   { name: "Margaret", role: "Club Finance Advisor" },
   { name: "Waqas", role: "Club Mentor" },
@@ -79,6 +84,8 @@ export const pastLeaders: PastLeader[] = [
   { name: "Waqas", role: "Former VPE" },
   { name: "Kasun", role: "Former VPM" },
   { name: "Albin", role: "Former VPPR" },
+  { name: "Sayeb", role: "Former VPE", note: "Jul–Aug 2026" },
+  { name: "Gondal", role: "Former Secretary", note: "Jul–Aug 2026" },
 ];
 
 /** The standard structure of a regular meeting, drawn from real club agendas. */

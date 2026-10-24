@@ -10,6 +10,10 @@ import { MeetingFlowSection } from "@/components/sections/MeetingFlowSection";
 import { LeadershipSection } from "@/components/sections/LeadershipSection";
 import { VisitSection } from "@/components/sections/VisitSection";
 
+// Re-check leadership data at most once an hour. Edits made in the admin
+// portal refresh the page immediately anyway (see app/admin/actions.ts).
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <>

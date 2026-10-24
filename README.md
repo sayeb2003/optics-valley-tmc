@@ -40,8 +40,14 @@ public/
 ```
 
 ## Editing club information
-All facts (meeting time, location, exec team, contact info) live in `src/config/club.ts`.
+All facts (meeting time, location, contact info) live in `src/config/club.ts`.
 Never hardcode these in a component — import from this file so updates happen in one place.
+
+## Admin portal (leadership board)
+The current officers and past leaders are edited in the private admin portal at `/admin`
+(email + password login, Owner and Editor roles), backed by Supabase. Setup steps:
+`supabase/README.md`. Until Supabase is configured — or if it's ever unreachable — the
+homepage falls back to `executiveTeam` / `pastLeaders` in `src/config/club.ts`.
 
 ## Adding custom illustrations later
 Drop transparent PNG or SVG files into `public/images/characters/`. Hero and section
@@ -49,4 +55,4 @@ components check for their presence and fall back to a clean abstract background
 no code changes needed to add them later.
 
 ## Environment variables
-See `.env.example`. Nothing is required for Phase 1.
+See `.env.example`. All optional — they only enable the admin portal.
